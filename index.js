@@ -15,7 +15,7 @@ app.get(
   },
 )
 app.get('/products', (req, res, next) => {
-  res.send(products)
+  res.json({ products })
 })
 
 app.put
@@ -26,5 +26,3 @@ app.delete
 app.listen(5000, () => {
   console.log('Its started', new Date())
 })
-
-// закончил урок 2.3
