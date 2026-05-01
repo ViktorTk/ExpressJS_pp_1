@@ -35,6 +35,10 @@ app.get('/downloadBooks', (req, res, next) => {
   }) // 1 параметр - ссылка на скачиваемый файл, 2 параметр - имя для файла при скачивании,  3 параметр - коллбек при успешной отправки файла на клиент;
 })
 
+app.get('/blog', (req, res, next) => {
+  res.redirect('/')
+})
+
 app.put
 app.post
 app.delete
