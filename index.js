@@ -15,6 +15,7 @@ app.get(
   },
 )
 app.get('/products', (req, res, next) => {
+  console.log('Page', req.query.page)
   res.json({ products })
 })
 
