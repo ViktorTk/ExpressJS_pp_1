@@ -28,6 +28,13 @@ app.get('/products/:id', (req, res, next) => {
   }
 })
 
+// загрузка файла с сервера
+app.get('/downloadBooks', (req, res, next) => {
+  res.download('./public/books.html', 'anotherBooksName', (err) => {
+    console.log('File sent')
+  }) // 1 параметр - ссылка на скачиваемый файл, 2 параметр - имя для файла при скачивании,  3 параметр - коллбек при успешной отправки файла на клиент;
+})
+
 app.put
 app.post
 app.delete
