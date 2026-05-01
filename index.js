@@ -1,4 +1,5 @@
 const express = require('express')
+const booksRouter = express.Router()
 
 const app = express() // its working
 
@@ -30,6 +31,17 @@ app.get('/products/:id', (req, res, next) => {
 app.put
 app.post
 app.delete
+
+booksRouter.get('/', (req, res) => {
+  res.send('Books')
+})
+
+booksRouter.get('/about', (req, res) => {
+  res.send('About books')
+})
+
+// выставляем основной маршрут для роутера
+app.use('/books', booksRouter)
 
 // запуск сервера; 1 аргумент - номер порта, 2 аргумент - callback-функция при запуске сервера;
 app.listen(5000, () => {
