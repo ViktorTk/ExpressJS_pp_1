@@ -19,6 +19,14 @@ app.get('/products', (req, res, next) => {
   res.json({ products })
 })
 
+app.get('/products/:id', (req, res, next) => {
+  if (products[req.params.id]) {
+    res.json(products[req.params.id])
+  } else {
+    res.status(403).send('Product not found')
+  }
+})
+
 app.put
 app.post
 app.delete
