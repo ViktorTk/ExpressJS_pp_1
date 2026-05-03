@@ -5,11 +5,34 @@ const app = express()
 
 const products = ['Apple', 'Pen', 'Computer']
 
+// промежуточная обработка на уровне приложения
+app.use((req, res, next) => {
+  console.log(
+    'Date',
+    new Date(),
+    'Method',
+    req.method,
+    'URL',
+    req.originalUrl,
+    'IP',
+    req.ip,
+  )
+
+  next()
+})
+
 app.use('/static', express.static(__dirname + '/public'))
 
-app.get('/', (req, res, next) => {
-  res.send('its working')
-})
+app.get(
+  '/',
+  (
+    req,
+    res,
+    next, // функция промежуточной обработки
+  ) => {
+    res.send('its working')
+  },
+)
 app.get('/products', (req, res, next) => {
   console.log('Page', req.query.page)
   res.json({ products })
