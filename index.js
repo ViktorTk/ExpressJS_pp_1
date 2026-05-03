@@ -72,6 +72,12 @@ booksRouter.get('/about', (req, res) => {
 // выставляем основной маршрут для роутера
 app.use('/books', booksRouter)
 
+// промежуточная обработка для обработки ошибок
+app.use((err, req, res, next) => {
+  console.log(err.stack)
+  res.status(500).send(err.stack)
+})
+
 // запуск сервера; 1 аргумент - номер порта, 2 аргумент - callback-функция при запуске сервера;
 app.listen(5000, () => {
   console.log('Its started', new Date())
