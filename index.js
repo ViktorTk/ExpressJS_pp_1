@@ -1,20 +1,15 @@
 const express = require('express')
 const booksRouter = express.Router()
 
-const app = express() // its working
+const app = express()
 
 const products = ['Apple', 'Pen', 'Computer']
 
-app.get(
-  '/',
-  (
-    req, // request
-    res, // response
-    next, // функция промежуточной обработки
-  ) => {
-    res.send('its working')
-  },
-)
+app.use('/static', express.static(__dirname + '/public'))
+
+app.get('/', (req, res, next) => {
+  res.send('its working')
+})
 app.get('/products', (req, res, next) => {
   console.log('Page', req.query.page)
   res.json({ products })
