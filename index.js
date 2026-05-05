@@ -8,8 +8,11 @@ const products = ['Apple', 'Pen', 'Computer']
 // // применение шаблонизатора "pug"
 // app.set('view engine', 'pug')
 
-// применение шаблонизатора "ejs"
-app.set('view engine', 'ejs')
+// // применение шаблонизатора "ejs"
+// app.set('view engine', 'ejs')
+
+// применение шаблонизатора "Handlebars"
+app.set('view engine', 'hbs')
 
 app.set('views', './views')
 
@@ -83,6 +86,15 @@ app.get('/ejs', (req, res, next) => {
   })
 })
 
+// рендер шаблона "main.hbs"
+app.get('/hbs', (req, res, next) => {
+  res.render('main.hbs', {
+    title: 'Products',
+    message: 'Products List',
+    products: products,
+  })
+})
+
 app.put
 app.post
 app.delete
@@ -108,5 +120,3 @@ app.use((err, req, res, next) => {
 app.listen(5000, () => {
   console.log('Its started', new Date())
 })
-
-// закончил урок 6.2
