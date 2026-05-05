@@ -5,8 +5,12 @@ const app = express()
 
 const products = ['Apple', 'Pen', 'Computer']
 
-// применение шаблонизатора "pug"
-app.set('view engine', 'pug')
+// // применение шаблонизатора "pug"
+// app.set('view engine', 'pug')
+
+// применение шаблонизатора "ejs"
+app.set('view engine', 'ejs')
+
 app.set('views', './views')
 
 // промежуточная обработка на уровне приложения
@@ -70,6 +74,15 @@ app.get('/main', (req, res, next) => {
   })
 })
 
+// рендер шаблона "main.ejs"
+app.get('/ejs', (req, res, next) => {
+  res.render('main', {
+    title: 'Products',
+    message: 'Products List',
+    products: products,
+  })
+})
+
 app.put
 app.post
 app.delete
@@ -95,3 +108,5 @@ app.use((err, req, res, next) => {
 app.listen(5000, () => {
   console.log('Its started', new Date())
 })
+
+// закончил урок 6.2
