@@ -5,6 +5,10 @@ const app = express()
 
 const products = ['Apple', 'Pen', 'Computer']
 
+// применение шаблонизатора "pug"
+app.set('view engine', 'pug')
+app.set('views', './views')
+
 // промежуточная обработка на уровне приложения
 app.use((req, res, next) => {
   console.log(
@@ -54,7 +58,16 @@ app.get('/downloadBooks', (req, res, next) => {
 })
 
 app.get('/blog', (req, res, next) => {
-  res.redirect('/')
+  res.redirect(301, '/')
+})
+
+// рендер шаблона "main.pug"
+app.get('/main', (req, res, next) => {
+  res.render('main', {
+    title: 'Products',
+    message: 'Products List',
+    products: products,
+  })
 })
 
 app.put
